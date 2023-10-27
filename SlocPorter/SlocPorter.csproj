@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>default</LangVersion>
+        <TargetFramework>net48</TargetFramework>
+        <!--PublishSingleFile>true</PublishSingleFile>
+        <SelfContained>true</SelfContained>
+        <RuntimeIdentifier>win-x64</RuntimeIdentifier-->
+    </PropertyGroup>
+ 
+    <ItemGroup>
+      <Reference Include="0Harmony">
+        <HintPath>..\References\0Harmony.dll</HintPath>
+      </Reference>
+      <Reference Include="Assembly-CSharp">
+        <HintPath>..\References\Assembly-CSharp-Publicized.dll</HintPath>
+      </Reference>
+      <Reference Include="Assembly-CSharp-firstpass">
+        <HintPath>..\References\Assembly-CSharp-firstpass.dll</HintPath>
+      </Reference>
+      <Reference Include="Axwabo.Helpers">
+        <HintPath>..\References\Axwabo.Helpers.dll</HintPath>
+      </Reference>
+      <Reference Include="CommandSystem.Core" Condition="'$(TargetFramework)' == 'net48'">
+        <HintPath>..\..\..\Documents\SCP Plugin\ExiledReferences\CommandSystem.Core.dll</HintPath>
+      </Reference>
+      <Reference Include="Exiled.API">
+        <HintPath>..\References\Exiled.API.dll</HintPath>
+      </Reference>
+      <Reference Include="MapEditorReborn">
+        <HintPath>..\References\MapEditorReborn.dll</HintPath>
+      </Reference>
+      <Reference Include="slocLoader">
+        <HintPath>..\References\slocLoader.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>..\References\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Costura.Fody" Version="5.8.0-alpha0098">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive; compile</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Fody" Version="6.8.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="Northwood.PluginAPI" Version="13.1.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.gitignore">
+        <Link>.gitignore</Link>
+      </Content>
+    </ItemGroup>
+
+</Project>
