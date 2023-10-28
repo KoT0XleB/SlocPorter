@@ -23,8 +23,8 @@
       <Reference Include="Axwabo.Helpers">
         <HintPath>..\References\Axwabo.Helpers.dll</HintPath>
       </Reference>
-      <Reference Include="CommandSystem.Core" Condition="'$(TargetFramework)' == 'net48'">
-        <HintPath>..\..\..\Documents\SCP Plugin\ExiledReferences\CommandSystem.Core.dll</HintPath>
+      <Reference Include="CommandSystem.Core">
+        <HintPath>..\..\..\..\Рабочий стол\Files\CommandSystem.Core.dll</HintPath>
       </Reference>
       <Reference Include="Exiled.API">
         <HintPath>..\References\Exiled.API.dll</HintPath>

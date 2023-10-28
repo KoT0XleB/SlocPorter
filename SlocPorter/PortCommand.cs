@@ -17,27 +17,24 @@ using PluginAPI.Enums;
 
 namespace SlocPorter;
 [CommandHandler(typeof(GameConsoleCommandHandler))]
+[CommandHandler(typeof(RemoteAdminCommandHandler))]
 public class PortCommand : ICommand
 {
     public bool Execute(ArraySegment<string> arguments, ICommandSender sender, out string response)
     {
-        string fileLoc = "";
-        foreach(string arg in arguments)
-        {
-            fileLoc += $"{arg} ";
-        }
+        string portFolder = Path.Combine(PluginAPI.Helpers.Paths.GlobalPlugins.Plugins, "SlocPorter");
 
-        fileLoc = fileLoc.TrimEnd();
-        fileLoc = Path.GetFullPath(fileLoc);
+        int count = 0;
         try
         {
-            string curLoc = fileLoc;//AppDomain.CurrentDomain.BaseDirectory;
+            string curLoc = Path.Combine(portFolder, "Import");
+
             foreach (string file in Directory.GetFiles(curLoc, "*.sloc"))
             {
                 try
                 {
                     string name = Path.GetFileNameWithoutExtension(file);
-                    string outputLoc = Path.Combine(curLoc, "exports");
+                    string outputLoc = Path.Combine(portFolder, "Export");
                     if (!Directory.Exists(outputLoc))
                         Directory.CreateDirectory(outputLoc);
                     Porter.PortFile(file, Path.Combine(outputLoc, name, name + ".json"));
@@ -46,6 +43,7 @@ public class PortCommand : ICommand
                 {
                     Log.Error($"Sloc Loading Error: {e}");
                 }
+                count++;
             }
         }
         catch (Exception e)
@@ -54,7 +52,7 @@ public class PortCommand : ICommand
             return false;
         }
 
-        response = "Ported";
+        response = $"Ported {count} files to => global/SlocPorter/Export";
         return true;
     }
 

@@ -59,6 +59,7 @@ public class Porter
             blockData.Scale = obj.Transform.Scale;
             blockData.ObjectId = obj.InstanceId;
             blockData.ParentId = obj.ParentId;
+
             if (obj.Type is ObjectType.Light)
             {
                 if (obj is not LightObject lightObject)
@@ -105,7 +106,7 @@ public class Porter
         }
 
         serializable.RootObjectId = parentId;
-        string outputData = JsonConvert.SerializeObject(serializable);
+        string outputData = JsonConvert.SerializeObject(serializable, Formatting.Indented);
        //serializable.RootObjectId = objectList.
         string outputFileDirectory = outputFile.Replace(Path.GetFileName(outputFile), "");
         if (!Directory.Exists(outputFileDirectory))
